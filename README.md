@@ -10,7 +10,6 @@ Done  By : Mohammad Tawfiq Masa'id
 
 Table of Contents
 
-Usage Requirements Development Installing Dependencies Tasks Team Contributing Usage
 
 Some usage instructions
 
@@ -32,4 +31,3 @@ View the task roadmap here
 
 Contributing
 Link : https://github.com/al6obasi
-See CONTRIBUTING.md for contribution guidelines.
