@@ -98,7 +98,6 @@
 
         function isAuthenticated() {
             // Check whether the current time is past the 
-            // access token's expiry time
             var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
             return new Date().getTime() < expiresAt;
         }
