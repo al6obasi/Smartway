@@ -1,6 +1,8 @@
 # Smartway
 
 A Smartway  task using AngularJs , 
+------------------------------------
+
 
 I used localstorage to store user credentials , cookies to store polls , bootstrap , font-awesome-4.1 and other tools.
 
@@ -8,12 +10,25 @@ I used localstorage to store user credentials , cookies to store polls , bootstr
 
 Done  By : Mohammad Tawfiq Masa'id 
 
-Table of Contents
+Table of Contents :
 
+----> Registeration view :
+1- Signup ,
 
+2- Login , logout 
+
+-----> Home view :
+1- news tab :
+				view to show the latest 5 news , expand specific news , see comments .
+2- polls tab :
+				view the previous polls , add a new poll and manage it .
+3- profile tab :
+				view the user credentials and update it .
+
+----------------------------------------------
 Some usage instructions
-
-Start : npm start , or http-server -a localhost -p 8000 -c-1
+From within the root directory:
+Start : npm start , once you had Installed Dependencies   you can run it using   http-server -a localhost -p 8000 -c-1 
 Test :npm test
 
 Requirements
@@ -22,10 +37,7 @@ Angular >= 1.6.x,  http-server , webdriver
 
 Installing Dependencies :
 
-
-From within the root directory:
-
-sudo npm start -g 
+ 
 
 View the task roadmap here
 
