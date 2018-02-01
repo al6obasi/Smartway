@@ -14,7 +14,7 @@ Usage Requirements Development Installing Dependencies Tasks Team Contributing U
 
 Some usage instructions
 
-Start : npm start , 
+Start : npm start , or http-server -a localhost -p 8000 -c-1
 Test :npm test
 
 Requirements
@@ -31,5 +31,5 @@ sudo npm start -g
 View the task roadmap here
 
 Contributing
-
+Link : https://github.com/al6obasi
 See CONTRIBUTING.md for contribution guidelines.
