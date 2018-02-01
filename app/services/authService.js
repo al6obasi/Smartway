@@ -24,7 +24,6 @@
                         isUser = true;
                     }
                 });
-                // console.log(vm.user, users, isUser);
                 if (isUser) {
 
                     // Set the time that the access token will expire at 
@@ -72,14 +71,14 @@
                     return vm.message;
                 }
 
-                users.push(vm.user);
+                users.push(logUser);
                 localStorage.setItem('user', JSON.stringify(users));
                 localStorage.setItem('currentUser', JSON.stringify(logUser));
                 $state.go('/login');
 
             } else {
 
-                var users = [vm.user]
+                var users = [logUser]
                 localStorage.setItem('user', JSON.stringify(users));
                 $state.go('/login');
 
