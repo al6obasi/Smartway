@@ -18,7 +18,8 @@ Table of Contents :
 
 2- Login       , logout 
 
------> Home view :
+-----> Home view :           
+
 1- news tab :
 				
 				view to show the latest 5 news , expand specific news , see comments .
