@@ -1,0 +1,56 @@
+<div id="page-wrapper" ng-style="{height: vm.windowHeight}">
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <hr>
+            <div class="pull-right">
+                <div class="btn-group" style="padding: 35px;" >
+                    <button  class="btn btn-primary"  ng-click="vm.logout()"> Logout </button>
+                </div>
+            </div>
+            <h1 class="page-header" style="padding: 25px;">Smartway</h1>
+            <div class="col-lg-6"></div>
+        </div>
+    </div>
+    <div class="row" style="height: 100%">
+        <div class="col-lg-12" style="height: 100%">
+            <div class="panel panel-default" style="height: 85%;">
+                <div class="panel-heading">
+                    <i class="fa fa-newspaper-o"></i> Smartway 
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body" style="height: 95%;">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="" data-target="#main" data-toggle="tab"> Main </a>
+                        </li>
+                        <li>
+                            <a href="" data-target="#polls" data-toggle="tab"> Polls management </a>
+                        </li>
+                        <li>
+                            <a href="" data-target="#profile" data-toggle="tab"> Profile </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content" style="height: 90%;">
+                        <div class="tab-pane fade in active" id="main" style="height: 100%;">
+                            <div ng-include="'home/main.html'" style="height: 100%;" />
+                            </div>
+                            <div class="tab-pane fade" id="polls" style="height: 100%">
+                                <div ng-include="'home/polls.html'"/>
+                                </div>
+                                <div class="tab-pane fade" id="profile" style="height: 100%">
+                                    <div ng-include="'home/profile.html'"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

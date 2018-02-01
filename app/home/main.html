@@ -1,0 +1,48 @@
+<div class="row" style="height: 100%">
+    <div class="col-lg-12" style="height: 100%">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Top News ... 
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6" style="float: left;">
+                    <div class="col-lg-12"  >
+                        <div class="col-lg-10" id="news">
+                            <ol class="list-group">
+                                <span class="label">The latest news ...</span>
+                                <li ng-repeat = " item in vm.news">
+                                    <h4 class="title"> {{item.title}}  <i class="fa fa-arrows-v" aria-hidden="true" ng-click = "vm.getMoreData(item)"></i></h4>
+                                </li>
+                            </ol>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="col-md-6" style="float: left;">
+                    <div class="detailBox" ng-show ="vm.showMoreData">
+                        <div class="titleBox">
+                            <label>Comment Box</label>
+                            <button type="button" class="close" aria-hidden="true" ng-click ="vm.hideCommentsBox()">&times;</button>
+                        </div>
+                        <div class="commentBox">
+                            <h3> {{vm.selectedItem.title}}</h3>
+                            <p class="taskDescription">{{vm.selectedItem.body}}</p>
+                        </div>
+                        <div class="actionBox">
+                            <span class="title">Comments : </span>
+                            <ul class="commentList">
+                                <li>
+                                    <div class="commentText" ng-repeat = " comment in vm.comments" >
+                                        <p class="">{{comment.body}}</p>
+                                        <span class="date sub-text">{{comment.email}}</span>
+                                    </div>
+                                </li>
+                                <hr>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

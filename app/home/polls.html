@@ -1,0 +1,114 @@
+<div class="row" style="height: 100%">
+    <div class="col-lg-12" style="height: 100%">
+        <div class="panel panel-default" style="height: 85%;">
+            <div class="panel-heading">
+                Polls ... 
+            </div>
+            <div class="panel-body">
+                <div class="panel-body" style="width: 100%;">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row" style="padding: 0px; margin: 0px;">
+                                <div class="col-md-8"></div>
+                                <div class="modal fade" id="myModaPoll" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <form name="pollForm" ng-submit='vm.addPoll()'>
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Poll Details</h4>
+                                                </div>
+                                                <div class="modal-header">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label" > Question</label>
+                                                                <input  name="q" type="text" placeholder="Your question" class="form-control" ng-model="vm.pollData.question" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group label-floating">
+                                                                <label class="control-label"> Answers</label>
+                                                                <ol>
+                                                                    <li>
+                                                                        <input  name="a1" type="text" class="form-control" placeholder="Your answer #1" ng-model="vm.pollData.answer1" required>
+                                                                    </li>
+                                                                    <br>
+                                                                    <li>
+                                                                        <input  name="a2" type="text" class="form-control" placeholder="Your answer #2" ng-model="vm.pollData.answer2" required>
+                                                                    </li>
+                                                                    <br>
+                                                                    <li>
+                                                                        <input  name="a3" type="text" class="form-control" placeholder="Your answer #3" ng-model="vm.pollData.answer3" required>
+                                                                    </li>
+                                                                </ol>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-title">
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </form>
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#myModaPoll" style="height: 35px;"><span class="glyphicon glyphicon-plus-sign"></span> Add Poll </button>
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 15px;">
+                                <div class="col-md-12"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <div class="table-responsive" style="width: 100%;">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th> Posted Date </th>
+                                                    <th> Posted By </th>
+                                                    <th> Question </th>
+                                                    <th> Answers </th>
+                                                    <th style="text-align: center;">Remove Poll</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="poll in vm.polls track by $index">
+                                                    <td>{{$index+1}}</td>
+                                                    <td>{{poll.date}}</td>
+                                                    <td>{{poll.username}}</td>
+                                                    <td>{{poll.question}}</td>
+                                                    <td >
+                                                        <ol>
+                                                            <li ng-repeat="answer in poll.answers track by $index">                                
+                                                                {{answer}} 
+                                                            </li>
+                                                        </ol>
+                                                    </td>
+                                                    <td style="text-align: center;">
+                                                        <span class="glyphicon glyphicon-remove-circle fa-2x" ng-click="vm.removePoll($index)"></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>

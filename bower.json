@@ -1,0 +1,27 @@
+{
+  "name": "smartway-task",
+  "description": "Smartway Task",
+  "version": "0.0.0",
+  "homepage": "https://github.com/al6obasi/Smartway",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.6.x",
+    "angular-loader": "~1.6.x",
+    "angular-mocks": "~1.6.x",
+    "angular-route": "~1.6.x",
+    "bootstrap": "~3.3.x",
+    "html5-boilerplate": "~6.0.x",
+    "jquery": "~3.2.x",
+    "angular-ui-router": "ui-router#^0.3.2",
+    "angular-bootstrap": "~2.5.x",
+    "font-awesome": "~4.7.x",
+    "metisMenu": "~2.7.x",
+    "angular-cookies": "~1.6.x",
+    "angular-material": "^1.1.5"
+    },
+  "resolutions": {
+    "angular": ">=1.6.x",
+    "jquery": ">=3.2.1"
+  }
+}

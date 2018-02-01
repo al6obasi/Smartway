@@ -1,0 +1,114 @@
+<div id="wrapper" ng-style="{height: vm.windowHeight}">
+    <div class="row" style="height: 100%">
+        <div class="col-lg-12" style="height: 100%">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Profile ... 
+                </div>
+                <div class="panel-body">
+                    <div class="row text-center">
+                        <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Profile Alert </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label" > {{vm.message}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-login main-center">
+                        <label for="name" class="cols-sm-2 control-label">Welcome Back  {{vm.account.name}}!</label>
+                        <form class="form-horizontal" name="signupForm" ng-submit='vm.updateProfile()'>
+                            <div class="form-group">
+                                <label for="name" class="cols-sm-2 control-label">Name</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="name"   placeholder="Enter your Name" ng-model='vm.account.name'  ng-show="vm.editMode" required/>
+                                        <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" ng-model='vm.account.name' ng-show="!vm.editMode" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="cols-sm-2 control-label">Email</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                        <input type="email" class="form-control" name="email"   placeholder="Enter your Email" ng-model='vm.account.email' ng-show="vm.editMode" required/>
+                                        <input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" ng-model='vm.account.email' ng-show="!vm.editMode" readonly required/>                                   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="cols-sm-2 control-label">Username</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+                                        <input type="email" class="form-control" name="username"   placeholder="Enter your Username" ng-model='vm.account.username' ng-show="vm.editMode" required/>
+                                        <input type="email" class="form-control" name="username" id="username"  placeholder="Enter your Username" ng-model='vm.account.username' readonly ng-show="!vm.editMode" required/>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="cols-sm-2 control-label">City</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="city"   placeholder="Enter your city" ng-model='vm.account.city' maxlength="10" ng-show="vm.editMode" required/>
+                                        <input type="text" class="form-control" name="city" id="city"  placeholder="Enter your city" ng-model='vm.account.city' maxlength="10"  readonly ng-show="!vm.editMode" required/>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="vm.editMode">
+                                <label for="password" class="cols-sm-2 control-label">Password</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="password" id="password"  placeholder="Enter your Password" ng-model='vm.account.password' minlength="8" ng-show="vm.editMode" required />
+                                        <input type="text" class="form-control" name="password"   placeholder="Enter your Password" ng-model='vm.account.password' readonly minlength="8" ng-show="!vm.editMode" required />                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="vm.editMode">
+                                <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="confirm"   placeholder="Confirm your Password" ng-model='vm.account.password2' minlength="8" ng-show="vm.editMode" required/>
+                                        <input type="text" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" ng-model='vm.account.password2' readonly minlength="8" ng-show="!vm.editMode" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="!vm.editMode">
+                                <input class="btn btn-lg btn-info btn-block"  value="Update Profile" ng-click ="vm.changeToEditMode()">
+                            </div>
+                            <hr>
+                            <div class="form-group" ng-show="vm.editMode">
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Save">
+                            </div>
+                            <div class="form-group" ng-show="vm.editMode">
+                                <input class="btn btn-lg btn-danger btn-block" ng-click ="vm.cancelEditMode()" value="Cancel">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="main-login main-center">
+	<form class="form-horizontal" name="signupForm" ng-submit='vm.signup()'>
+		
+		<div class="form-group">
+			<label for="name" class="cols-sm-2 control-label">Your Name</label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+					<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" ng-model='vm.user.name'  required/>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="email" class="cols-sm-2 control-label">Your Email</label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+					<input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" ng-model='vm.user.email' required/>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="username" class="cols-sm-2 control-label">Username</label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+					<input type="email" class="form-control" name="username" id="username"  placeholder="Enter your Username" ng-model='vm.user.username' required/>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="username" class="cols-sm-2 control-label">City</label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-home" aria-hidden="true"></i></span>
+					<input type="text" class="form-control" name="city" id="city"  placeholder="Enter your city" ng-model='vm.user.city' maxlength="10" required/>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="password" class="cols-sm-2 control-label">Password</label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+					<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" ng-model='vm.user.password' minlength="8" required />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+					<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" ng-model='vm.user.password2' minlength="8" required/>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<input class="btn btn-lg btn-info btn-block" type="submit" value="Sign Up">
+		</div>
+		<hr>
+		<div class="form-group">
+            <a  class="btn btn-lg btn-success btn-block" href="#!/login"  >Login </a>
+         </div>
+         <div class="alert alert-dismissible alert-danger" role="alert" ng-hide=" ! vm.message " style="height: 100px;">
+            <button type="button" class="close" aria-label="Close">&emsp;<span aria-hidden="true">&times;</span></button>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only"></span>
+            {{vm.message}}
+        </div>
+	</form>
+</div>

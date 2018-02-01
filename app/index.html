@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" ng-app="Smartway">
+    <head>
+        <meta charset="utf-8">
+
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <META HTTP-EQUIV="Expires" CONTENT="-1">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Smaerway, Inc.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Smartway</title>
+
+        <!-- Vendor: Bootstrap Stylesheets http://getbootstrap.com -->
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
+        <!-- Our Website CSS Styles -->
+
+        <!-- MetisMenu CSS -->
+        <link rel="stylesheet" href="css/plugins/metisMenu/metisMenu.min.css">
+
+        <!-- Timeline CSS -->
+        <link rel="stylesheet" href="css/plugins/timeline.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="app.css">
+
+        <!-- Morris Charts CSS -->
+        <link rel="stylesheet" href="css/plugins/morris.css">
+    </head>
+
+    <body id="wrapper">
+
+        <!-- <div id="wrapper"> -->
+            <div>
+                <ui-view ></ui-view>
+            </div>
+        <!-- </div> -->
+
+
+        <!-- /#wrapper -->
+        <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-3.5.0.min.js"></script>
+
+        <!-- Vendor: Javascripts -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+
+
+        <!-- Vendor: Angular, followed by our custom Javascripts -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+
+
+        <!-- Our Website Javascripts -->
+        <script src="app.js"></script>
+        <script src="app.run.js"></script>
+
+        <!-- Controllers -->
+
+        <script src="home/homeController.js"></script>
+        <script src="login/loginController.js"></script>
+
+
+        <!-- services -->
+        <script src="services/authService.js"></script>
+        <script src="services/dataService.js"></script>
+
+
+
+        <!-- Custom Theme JavaScript -->
+        <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+        <script src="js/sb-admin-2.js"></script>
+
+    </body>
+</html>
