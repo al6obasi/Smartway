@@ -17,7 +17,7 @@
         .module('Smartway')
         .controller('homeController', homeController);
 
-    function homeController(authService, dataService, $state, $window,$scope, $cookies) {
+    function homeController(authService, dataService, $state, $window, $scope, $cookies) {
         var vm = this;
 
 

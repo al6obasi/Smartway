@@ -31,7 +31,7 @@ Table of Contents :
 
 ----------------------------------------------
 Some usage instructions
-From within the root directory:
+From within the root directory open app directory then to  :
 
 ----------------------
 Start : npm start , once you had Installed Dependencies   you can run it using   http-server -a localhost -p 8000 -c-1 
