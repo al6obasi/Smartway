@@ -77,7 +77,8 @@
                                                     <th> Posted Date </th>
                                                     <th> Posted By </th>
                                                     <th> Question </th>
-                                                    <th> Answers </th>
+                                                    <th> Answers and Results</th>
+                                                    <th style="text-align: center;"> Number of Respondents</th>
                                                     <th style="text-align: center;">Remove Poll</th>
                                                 </tr>
                                             </thead>
@@ -85,16 +86,19 @@
                                                 <tr ng-repeat="poll in vm.polls track by $index">
                                                     <td>{{$index+1}}</td>
                                                     <td>{{poll.date}}</td>
-                                                    <td>{{poll.username}}</td>
+                                                    <td>{{poll.email}}</td>
                                                     <td>{{poll.question}}</td>
                                                     <td >
                                                         <ol>
                                                             <li ng-repeat="answer in poll.answers track by $index">                                
-                                                                {{answer}} 
+                                                                {{answer.text}} &emsp; {{poll.answers[$index].count/poll.totalCount *100  | round }} %
                                                             </li>
                                                         </ol>
                                                     </td>
                                                     <td style="text-align: center;">
+                                                        {{poll.totalCount}}
+                                                    </td>
+                                                    <td style="text-align: center; cursor: pointer;">
                                                         <span class="glyphicon glyphicon-remove-circle fa-2x" ng-click="vm.removePoll($index)"></span>
                                                     </td>
                                                 </tr>

@@ -5,6 +5,82 @@
                 Top News ... 
             </div>
             <div class="panel-body">
+                <div class="row">
+                    <div class="container" style="float: left;padding: 6%;" ng-if="vm.polls[0]">
+                        <h2><span class="label label-default"> Participate in the latest Poll</span></h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <span class="glyphicon glyphicon-arrow-right"></span>{{vm.lastPoll.question}} ?!
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row" style="padding: 6%;">
+                                            <form accept-charset="UTF-8" role="form" ng-submit='vm.vote()'>                                            
+                                                <ul class="list-group">
+                                                    <li class="list-group-item" ng-repeat="answer in vm.lastPoll.answers">
+                                                        <div class="radio">
+                                                            <label>
+                                                            <input type="radio" name="optionsRadios" value="{{answer.text}}" ng-model='vm.pollAnswer' required>
+                                                            {{answer.text}}
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="panel-footer">
+                                                    <input  ng-show="vm.voteOnce" class="btn btn-primary btn-sm" type="submit" value="Vote">   
+                                                    <a class="btn btn-success btn-sm" ng-click="vm.viewResult()">View Result</a>
+                                                </div>
+                                                <div class="alert alert-dismissible alert-danger" role="alert" ng-hide=" ! vm.pollmessage " style="height: 100px;">
+                                                    <button type="button" class="close" aria-label="Close">&emsp;<span aria-hidden="true">&times;</span></button>
+                                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                    <span class="sr-only"></span>
+                                                    {{vm.pollmessage}}
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" ng-show="vm.showResult">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <span class="glyphicon glyphicon-arrow-left"></span><span>Poll Results</span>
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row" style="padding: 6%;">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.lastPoll.answers[0].count/vm.polls[0].totalCount *100}}%">
+                                                </div>
+                                                <span class="progress-type">  {{vm.lastPoll.answers[0].text}}</span>
+                                                <span class="progress-completed">{{vm.lastPoll.answers[0].count/vm.polls[0].totalCount *100  | round }} %</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.lastPoll.answers[1].count/vm.polls[0].totalCount *100}}%">
+                                                </div>
+                                                <span class="progress-type">  {{vm.lastPoll.answers[1].text}}</span>
+                                                <span class="progress-completed">{{vm.lastPoll.answers[1].count/vm.polls[0].totalCount *100 | round }} %</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.lastPoll.answers[2].count/vm.polls[0].totalCount *100}}%">
+                                                </div>
+                                                <span class="progress-type">  {{vm.lastPoll.answers[2].text}}</span>
+                                                <span class="progress-completed">{{vm.lastPoll.answers[2].count/vm.polls[0].totalCount *100 | round }} %</span>
+                                            </div>
+                                            <div class="panel-footer">
+                                                <a  class="btn btn-default btn-sm" ng-click="vm.hidePollResult()">Hide Results</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-6" style="float: left;">
                     <div class="col-lg-12"  >
                         <div class="col-lg-10" id="news">

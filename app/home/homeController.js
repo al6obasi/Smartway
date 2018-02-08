@@ -1,26 +1,24 @@
 (function () {
     'use strict';
 
-    angular.module('Smartway').config(homeConfig);
-
-    function homeConfig($stateProvider) {
-        $stateProvider.state('/home', {
-            url: '/home',
-            controller: 'homeController',
-            templateUrl: 'home/home.html',
-            controllerAs: 'vm',
-            authenticate: true
-        })
-    }
-
     angular
         .module('Smartway')
         .controller('homeController', homeController);
 
-    function homeController(authService, dataService, $state, $window, $scope, $cookies) {
+    // homeController.$inject = ['ngCookies'];
+
+    function homeController(authService, dataService) {
+
+        // add cookies as depandances and invoke it .
+        // setup cookies
+        var $cookies;
+        angular.injector(['ngCookies']).invoke(['$cookies', function(_$cookies_) {
+              $cookies = _$cookies_;
+          }]);
+
+
+
         var vm = this;
-
-
         prepareDomFunctions();
 
         function prepareDomFunctions() {
@@ -40,13 +38,24 @@
             vm.hideCommentsBox    = hideCommentsBox;
 
             // call api service to get the news when load the page
+
             vm.getAllnews();
 
             // initialize data and function for polls tab .
             var prevPolls         = $cookies.get('Polls') ;
 
+            vm.voteOnce           = true;
+            vm.showResult         = false;
+
+            vm.pollAnswer         = '';
+            vm.message            = '';
+            vm.viewResult         = viewResult;
+            vm.hidePollResult     = hidePollResult;
+            vm.vote               = vote;
+
             if (prevPolls) {
                 vm.polls          = JSON.parse($cookies.get('Polls'));
+                vm.lastPoll       = vm.polls [0];
             } else {
                 vm.polls          = [];
             }
@@ -94,7 +103,7 @@
 
         function getMoreData(item) {
             vm.selectedItem = item;
-            vm.showMoreData = ! vm.showMoreData;
+            vm.showMoreData = true;
             (vm.showMoreData) ? vm.getComments(item.id) : 0;
         }
 
@@ -104,18 +113,40 @@
 
         // functions for Polls tab 
         function addPoll() {
-            var username = JSON.parse(localStorage.getItem('currentUser')).username;
+            var email = (JSON.parse(localStorage.getItem('currentUser'))).email
 
-            vm.polls.unshift({  question: vm.pollData.question,
-                answers: [vm.pollData.answer1, vm.pollData.answer2, vm.pollData.answer3],
-                date: (new Date() + '').substring(0, 16),
-                username:username
-             });
-
+            vm.polls.unshift(
+                {  
+                    question: vm.pollData.question,
+                    answers: [
+                        {
+                            text: vm.pollData.answer1,
+                            count:0
+                        },
+                        {
+                            text: vm.pollData.answer2,
+                            count:0
+                        },
+                        {
+                            text: vm.pollData.answer3,
+                            count:0
+                        },
+                    ],
+                    date: (new Date() + '').substring(0, 16),
+                    email:email,
+                    users:[],
+                    totalCount:0
+                }
+             );
+            vm.pollmessage        = '';
             vm.pollData.question  = '';
             vm.pollData.answer1   = '';
             vm.pollData.answer2   = '';
             vm.pollData.answer3   = '';
+            vm.lastPoll           = vm.polls[0];
+            vm.allowUser          = true;
+            vm.showResult         = false;
+
 
             // update Polls cookies 
             $cookies.put('Polls', JSON.stringify(vm.polls));
@@ -125,11 +156,50 @@
             vm.polls.forEach(function (poll, idx) {
                 if (index == idx) {
                     vm.polls.splice(idx,1)
+                    if (index == 0) {
+                        vm.lastPoll = vm.polls[0];
+                    }
                 }          
             })
-
+            vm.showResult = false;
             // update Polls cookies 
             $cookies.put('Polls', JSON.stringify(vm.polls));            
+        }
+
+        function viewResult() {
+            vm.showResult = true;
+        }
+
+        function hidePollResult() {
+            vm.showResult = false;
+        }
+
+        function vote() {
+            var email = vm.account.email;
+            vm.pollmessage = '';
+            vm.allowUser = true;
+            vm.polls[0].users.map(function (user) {
+
+                if (user == email){
+                    vm.pollmessage = ' You are already voted in this poll ... ! ';
+                    vm.allowUser = false;
+                    return;
+                }
+            })
+
+            if (vm.allowUser){            
+                vm.polls[0].answers.map(function (answer) {
+                    if(answer.text == vm.pollAnswer){
+                        answer.count ++;
+                        vm.polls[0].totalCount ++;
+                        vm.polls[0].users.push(email);
+                    }
+                })
+                vm.pollmessage = '';
+                $cookies.put('Polls', JSON.stringify(vm.polls));
+                vm.voteOnce = false;
+                console.log(vm.pollAnswer, vm.polls);
+            }
         }
 
         // functions for profile tab 
@@ -137,7 +207,7 @@
 
             if (vm.account) {
                 vm.users.forEach(function (user, index) {
-                    if(user.username == vm.account.username){
+                    if(user.email == vm.account.email){
                         vm.account = user;
                         vm.userIndex = index;
                     }
@@ -181,6 +251,13 @@
         function logout() {
             authService.logout();
         }
+      //    var blob = new Blob(["data'\n'"], {type: 'text/plain'});
+      //    var e = document.createEvent('MouseEvents'),
+      //     a = document.createElement('a');
+      //           e.initEvent('click', true, false, window,
+      //     0, 0, 0, 0, 0, false, false, false, false, 0, null);
+      // a.dispatchEvent(e);
+      //    console.log(a,e);
     }
 
 })();

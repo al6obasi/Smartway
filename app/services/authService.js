@@ -20,7 +20,7 @@
             if (users) {
                 var isUser = false;
                 users.map(function (user) {
-                    if (user.username == logUser.username && user.password == logUser.password) {
+                    if (user.email == logUser.email && user.password == logUser.password) {
                         isUser = true;
                     }
                 });
@@ -61,7 +61,7 @@
 
                 var isUser = false
                 users.map(function (user) {
-                    if (user.username == logUser.username) {
+                    if (user.email == logUser.email) {
                         isUser = true;
                     }
                 });
