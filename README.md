@@ -37,6 +37,11 @@ From within the root directory open app directory then to  :
 ----------------------
 Start : npm start , once you had Installed Dependencies   you can run it using   http-server -a localhost -p 8000 -c-1 
 
+open another terminal and Start JSON Server  : json-server --watch db.json 
+
+please make sure json-server was installed successfully . 
+if not ?! try : npm install -g json-server
+
 ----------------------
 
 Test :npm test
@@ -45,7 +50,7 @@ Test :npm test
 
 Requirements
 
-Angular >= 1.6.x,  http-server , webdriver
+Angular >= 1.6.x,  http-server , webdriver, json-server
 
 Installing Dependencies :
 

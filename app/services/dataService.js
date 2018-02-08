@@ -11,7 +11,7 @@
     function dataService( $q, $http, $timeout) {
 
 
-        var serviceUrl = "http://jsonplaceholder.typicode.com";
+        var serviceUrl = "http://localhost:3000";
 
         return {
             getAllNews:getAllNews,
