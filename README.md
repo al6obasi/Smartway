@@ -44,7 +44,7 @@ _________________________________________________
 
 please make sure json-server was installed successfully . 
 if not ?! try : npm install -g json-server
-go to   the root directory'  Smartway ' then on a new terminal : json-server --watch db.json 
+go to   the root directory'  Smartway ' then open  another terminal : json-server --watch db.json 
 
 ----------------------
 
