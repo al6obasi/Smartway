@@ -22,10 +22,10 @@ Table of Contents :
 
 1- news tab :
 				
-				view to show the latest 5 news , expand specific news , see comments .
+				view to show the latest 5 news , expand specific news , see comments . Add posts , Add comment 
 2- polls tab :
 				
-				view the previous polls , add a new poll and manage it .
+				view the previous polls with results, participate in poll once , add a new poll and manage it .
 3- profile tab :
 				
 				view the user credentials and update it .
