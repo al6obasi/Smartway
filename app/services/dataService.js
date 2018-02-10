@@ -8,18 +8,26 @@
         .module('Smartway')
         .factory('dataService', dataService);
 
-    function dataService( $q, $http, $timeout) {
+    function dataService($q, $http, $timeout) {
 
 
         var serviceUrl = "http://localhost:3000";
 
         return {
-            getAllNews:getAllNews,
-            getAllCommentByPostId:getAllCommentByPostId
+            getAllNews: getAllNews,
+            getAllCommentByPostId: getAllCommentByPostId,
+            addComment: addComment,
+            addPost: addPost
         };
 
         function httpGet(url, parameters) {
             var promise = $http.get(url + parameters);
+            return promise;
+        }
+
+
+        function httpPost(uri, data) {
+            var promise = $http.post(uri, data);
             return promise;
         }
 
@@ -56,6 +64,37 @@
 
             return deferred.promise;
         }
+
+        function addComment(data) {
+            var deferred = $q.defer();
+            httpPost(serviceUrl + "/posts/" + data.postId + "/comments/", data).then(addCommentSuccess, addCommentError);
+
+            function addCommentSuccess(response) {
+                deferred.resolve(response.data);
+            }
+
+            function addCommentError(response) {
+                deferred.reject(response.data);
+            }
+
+            return deferred.promise;
+        }
+
+        function addPost(data) {
+            var deferred = $q.defer();
+            httpPost(serviceUrl + "/posts/", data).then(addPostSuccess, addPostSuccessError);
+
+            function addPostSuccess(response) {
+                deferred.resolve(response.data);
+            }
+
+            function addPostSuccessError(response) {
+                deferred.reject(response.data);
+            }
+
+            return deferred.promise;
+        }
+
 
     }
 

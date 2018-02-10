@@ -1,19 +1,79 @@
 {
   "posts": [
-    { 
-    "id": 1,
-     "title": "json-server",
+    {
+      "id": 1,
+      "title": "json-server",
       "author": "typicode"
+    },
+    {
+      "title": "Smartway ",
+      "author": "maltobasi@hotmail.com",
+      "id": 2
+    },
+    {
+      "title": "hello after update",
+      "author": "maltobasi@hotmail.com",
+      "id": 3
+    },
+    {
+      "title": "Shared your posts here :)",
+      "author": "maltobasi@hotmail.com",
+      "id": 4
+    },
+    {
+      "title": "Alslam Alaykom ,\nhappy weekend :)",
+      "author": "maltobasi@hotmail.com",
+      "id": 5
     }
   ],
   "comments": [
-    { 
-	 "id": 1,
-     "body": "some comment",
-     "postId": 1
-     }
-  ],
-  "profile": {
-   "name": "typicode" 
-  }
+    {
+      "body": "some comment",
+      "postId": "1",
+      "email": "maltobasi@hotmal.com",
+      "id": 1
+    },
+    {
+      "body": "nice guys",
+      "postId": "1",
+      "email": "maltobasi@hotmail.com",
+      "id": 2
+    },
+    {
+      "body": "salam guys",
+      "postId": "2",
+      "email": "maltobasi@hotmail.com",
+      "id": 3
+    },
+    {
+      "body": "ok awesome !",
+      "postId": "3",
+      "email": "maltobasi@hotmail.com",
+      "id": 4
+    },
+    {
+      "body": "Salam guys",
+      "postId": "4",
+      "email": "maltobasi@hotmail.com",
+      "id": 5
+    },
+    {
+      "body": "walslam moh",
+      "postId": "4",
+      "email": "maltobasi@hotmail.com",
+      "id": 6
+    },
+    {
+      "body": "thank bro ...",
+      "postId": "5",
+      "email": "maltobasi@hotmail.com",
+      "id": 7
+    },
+    {
+      "body": "send me your email",
+      "postId": "1",
+      "email": "maltobasi@hotmail.com",
+      "id": 8
+    }
+  ]
 }

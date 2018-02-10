@@ -5,11 +5,11 @@
                 Top News ... 
             </div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="container" style="float: left;padding: 6%;" ng-if="vm.polls[0]">
-                        <h2><span class="label label-default"> Participate in the latest Poll</span></h2>
+                <div class="row" style="float: left;padding: 6%;text-align: center;">
+                    <div class="container" ng-if="vm.polls[0]">
                         <div class="row">
                             <div class="col-md-6">
+                                <h2><span class="label label-default" style="text-align: center;" ng-hide="vm.showResult"> Participate in the latest poll</span></h2>
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">
@@ -17,8 +17,8 @@
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        <div class="row" style="padding: 6%;">
-                                            <form accept-charset="UTF-8" role="form" ng-submit='vm.vote()'>                                            
+                                        <div class="row" style="padding: 6%;text-align: center;">
+                                            <form accept-charset="UTF-8" role="form" ng-submit='vm.vote()'>
                                                 <ul class="list-group">
                                                     <li class="list-group-item" ng-repeat="answer in vm.lastPoll.answers">
                                                         <div class="radio">
@@ -31,10 +31,10 @@
                                                 </ul>
                                                 <div class="panel-footer">
                                                     <input  ng-show="vm.voteOnce" class="btn btn-primary btn-sm" type="submit" value="Vote">   
-                                                    <a class="btn btn-success btn-sm" ng-click="vm.viewResult()">View Result</a>
+                                                    <!-- <a class="btn btn-success btn-sm" ng-click="vm.viewResult()">View Result</a> -->
                                                 </div>
                                                 <div class="alert alert-dismissible alert-danger" role="alert" ng-hide=" ! vm.pollmessage " style="height: 100px;">
-                                                    <button type="button" class="close" aria-label="Close">&emsp;<span aria-hidden="true">&times;</span></button>
+                                                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                                     <span class="sr-only"></span>
                                                     {{vm.pollmessage}}
@@ -45,6 +45,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6" ng-show="vm.showResult">
+                                <h2><span class="label label-default" style="text-align: center;" ng-show="vm.showResult"> The results in the latest poll</span></h2>
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">
@@ -52,21 +53,21 @@
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        <div class="row" style="padding: 6%;">
+                                        <div class="row" style="padding: 6%;text-align: center;">
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.lastPoll.answers[0].count/vm.polls[0].totalCount *100}}%">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="85" style="width: {{vm.lastPoll.answers[0].count/vm.polls[0].totalCount *100 -15}}%">
                                                 </div>
                                                 <span class="progress-type">  {{vm.lastPoll.answers[0].text}}</span>
                                                 <span class="progress-completed">{{vm.lastPoll.answers[0].count/vm.polls[0].totalCount *100  | round }} %</span>
                                             </div>
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.lastPoll.answers[1].count/vm.polls[0].totalCount *100}}%">
+                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="85" style="width: {{vm.lastPoll.answers[1].count/vm.polls[0].totalCount *100 -15}}%">
                                                 </div>
                                                 <span class="progress-type">  {{vm.lastPoll.answers[1].text}}</span>
                                                 <span class="progress-completed">{{vm.lastPoll.answers[1].count/vm.polls[0].totalCount *100 | round }} %</span>
                                             </div>
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{vm.lastPoll.answers[2].count/vm.polls[0].totalCount *100}}%">
+                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" aria-valuemax="85" style="width: {{vm.lastPoll.answers[2].count/vm.polls[0].totalCount *100 -15}}%">
                                                 </div>
                                                 <span class="progress-type">  {{vm.lastPoll.answers[2].text}}</span>
                                                 <span class="progress-completed">{{vm.lastPoll.answers[2].count/vm.polls[0].totalCount *100 | round }} %</span>
@@ -81,20 +82,36 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6" style="float: left;">
+                <div class="row" style="width: 95%;padding: 6%;text-align: center;">
+                    <div class="col-md-6">
+                        <div class="widget-area no-padding blank">
+                            <h2><span class="label label-default"> Share your post ... </span></h2>
+                            <div class="status-upload">
+                                <form ng-submit='vm.addPost()'>
+                                    <textarea placeholder="What are you doing right now?" ng-model ='vm.post'></textarea>
+                                    <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                                </form>
+                            </div>
+                            <!-- Status Upload  -->
+                        </div>
+                        <!-- Widget Area -->
+                    </div>
+                </div>
+                <div class="col-md-6" style="float: left;padding: 8%;">
                     <div class="col-lg-12"  >
+                        <h2><span class="label label-default">The latest posts ... </span></h2>
                         <div class="col-lg-10" id="news">
                             <ol class="list-group">
-                                <span class="label">The latest news ...</span>
-                                <li ng-repeat = " item in vm.news">
+                                <li ng-repeat = " item in vm.news" style="padding: 3%;">
                                     <h4 class="title"> {{item.title}}  <i class="fa fa-arrows-v" aria-hidden="true" ng-click = "vm.getMoreData(item)"></i></h4>
+                                    <span class="date sub-text"> {{item.author}} </span>
                                 </li>
                             </ol>
                         </div>
                         <hr>
                     </div>
                 </div>
-                <div class="col-md-6" style="float: left;">
+                <div class="col-md-6" style="float: left;padding: 8%; ">
                     <div class="detailBox" ng-show ="vm.showMoreData">
                         <div class="titleBox">
                             <label>Comment Box</label>
@@ -104,17 +121,25 @@
                             <h3> {{vm.selectedItem.title}}</h3>
                             <p class="taskDescription">{{vm.selectedItem.body}}</p>
                         </div>
-                        <div class="actionBox">
+                        <div class="actionBox" >
                             <span class="title">Comments : </span>
-                            <ul class="commentList">
-                                <li>
-                                    <div class="commentText" ng-repeat = " comment in vm.comments" >
+                            <ul class="commentBox Comments" >
+                                <li >
+                                    <div class="commentText"  ng-repeat = " comment in vm.comments" >
                                         <p class="">{{comment.body}}</p>
                                         <span class="date sub-text">{{comment.email}}</span>
                                     </div>
                                 </li>
                                 <hr>
                             </ul>
+                            <form class="form-inline" role="form" ng-submit='vm.addComment()'>
+                                <div class="form-group">
+                                    <input class="form-control" ng-model='vm.comment' type="text" placeholder="Your comments" />
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-default" type="submit">Add</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

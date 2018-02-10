@@ -91,7 +91,7 @@
                                                     <td >
                                                         <ol>
                                                             <li ng-repeat="answer in poll.answers track by $index">                                
-                                                                {{answer.text}} &emsp; {{poll.answers[$index].count/poll.totalCount *100  | round }} %
+                                                                {{answer.text}} &emsp; &emsp; {{(poll.answers[$index].count/poll.totalCount *100  | round)}} %
                                                             </li>
                                                         </ol>
                                                     </td>

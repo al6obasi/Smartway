@@ -5,8 +5,6 @@
         'ui.router',
         'ngCookies',
         'ngRoute',
-        'ngMaterial',
-        'ngAnimate',
-        'ngAria',
+        'ngMaterial'
     ])
 })();

@@ -4,18 +4,31 @@
         .module('Smartway')
         .service('authService', authService);
 
-    authService.$inject = ['$state'];
+    authService.$inject = ['$state', '$rootScope'];
 
-    function authService($state) {
+    function authService($state, $rootScope) {
         var vm = this;
         vm.message = '';
 
-        function login(logUser) {
 
+
+        // when route change check if current user authenticated or not .
+        $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+            if (toState.authenticate && !isAuthenticated()) {
+                // User isn’t authenticated.
+             // Remove tokens and expiry time from localStorage
+                localStorage.removeItem('currentUser');
+                localStorage.removeItem('id_token');
+                localStorage.removeItem('expires_at');               
+                $state.transitionTo("/login");
+                event.preventDefault();
+            }
+        });
+        function login(logUser) {
 
             // get all users from local storage .
 
-            var users = JSON.parse(localStorage.getItem('user'))
+            var users = JSON.parse(localStorage.getItem('user'));
             // if we have already users in local storage .
             if (users) {
                 var isUser = false;
@@ -101,11 +114,23 @@
             var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
             return new Date().getTime() < expiresAt;
         }
+
+        function isLoggedIn() {
+
+            // check if the user already logged in move state to home.
+            if (isAuthenticated()){
+                $state.go('/home');
+                return;
+            }else{
+                $state.go('/login');
+            }
+        }        
         return {
             login: login,
             logout: logout,
             signup: signup,
             isAuthenticated: isAuthenticated,
+            isLoggedIn:isLoggedIn
         }
     }
 
