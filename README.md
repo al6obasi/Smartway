@@ -22,7 +22,7 @@ Table of Contents :
 
 1- news tab :
 				
-				view to show the latest 5 news , expand specific news , see comments . Add posts , Add comment 
+				view to show the latest 5 posts , expand specific post , see comments . Add posts , Add comments 
 2- polls tab :
 				
 				view the previous polls with results, participate in poll once , add a new poll and manage it .
