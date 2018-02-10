@@ -39,7 +39,7 @@ _________________________________________________
 ################ Important Notes : ################
 
 
-Start : terminal #1: npm start , once you had Installed Dependencies  you can run it using  : http-server -a localhost -p 8000 -c-1 
+Start : terminal #1: npm start after install all depandnces it will work automatically or  once you had Installed Dependencies  you can run it using  : http-server -a localhost -p 8000 -c-1 
 
  From the root directory 'Smartway' open another terminal and Start JSON Server to communicate with db
 
