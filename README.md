@@ -36,15 +36,31 @@ From within the root directory open app directory then to  :
 
 _________________________________________________
 
-Start :terminal #1: npm start , once you had Installed Dependencies   you can run it using  : http-server -a localhost -p 8000 -c-1 
+################ Important Notes : ################
 
-terminal #2 : From the root directory 'Smartway' open another terminal and Start JSON Server to communicate with db  
-:  json-server --watch db.json 
+
+Start : terminal #1: npm start , once you had Installed Dependencies  you can run it using  : http-server -a localhost -p 8000 -c-1 
+
+ From the root directory 'Smartway' open another terminal and Start JSON Server to communicate with db
+
+terminal #2  :  json-server --watch db.json 
+
+
+###################################################
+
 _________________________________________________
+
+
+################ Important Notes 2  : ################
+
 
 please make sure json-server was installed successfully . 
 if not ?! try : npm install -g json-server
 go to   the root directory'  Smartway ' then open  another terminal : json-server --watch db.json 
+
+###################################################
+
+______________________________________________________
 
 ----------------------
 
